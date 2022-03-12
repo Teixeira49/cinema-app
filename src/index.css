@@ -48,5 +48,17 @@ code {
 }
 
 .MoviesOrderDiscover {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  list-style: none;
+  font-size: 18px;
+}
 
+.MovieBlocks{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 50px;
+  justify-content: center;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 3px;
 }

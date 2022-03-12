@@ -30,9 +30,9 @@ export default function MoviesSection() {
         <header className='MoviesGeneral'>
             ¿Que pelicula desea consultar hoy?:
         </header>
-        <ul>
+        <ul className='MovieBlocks'>
             {movies.map(movie => (
-                <li key={movie.id}><div>{"Titulo: "}{movie.title}</div><div>{"Idioma Original: "}{movie.original_language}</div></li>
+                <li className="MoviesOrderDiscover" key={movie.id}><img src={"https://image.tmdb.org/t/p/w300" + movie.poster_path} alt="" /> <div>{"Titulo: "}{movie.title}</div><div>{"Idioma Original: "}{movie.original_language}</div></li>
             ))}
         </ul>
     </div>
