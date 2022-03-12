@@ -5,9 +5,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:slategray;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.TitleBar{
+  background: linear-gradient(to bottom, black, slategray);
+  padding: 3px;
+}
+
+.TitleP {
+  font-family: fantasy;
+  text-align: center;
+  color: gold;
+  text-shadow: 15px;
+  text-decoration:orange;
+  font-style: italic;
+}
+
+.MoviesGeneral {
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: oblique;
+  padding: 3px;
 }
