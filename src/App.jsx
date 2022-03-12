@@ -3,6 +3,8 @@ import logo from './logo.svg'
 import './App.css'
 import HomePage from './pages/HomePage'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import axios from "axios"
+
 
 const PageNotFound = () =>
   <h1> Error 404: Page not Found, Don't be sad. come take a hug (っ◔◡◔)っ </h1>

@@ -33,3 +33,20 @@ code {
   font-style: oblique;
   padding: 3px;
 }
+
+.AccessMenu {
+  background-color: black;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  padding: 12px;
+  text-align: right;
+}
+
+.LetterMenu{
+  padding: 3px;
+  margin: 10px;
+}
+
+.MoviesOrderDiscover {
+
+}
