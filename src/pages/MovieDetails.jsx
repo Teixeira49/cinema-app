@@ -17,7 +17,6 @@ export default function MovieDetails(){
         axios.get(UrlKeyA + movieId + UrlKeyB + APIKEY)
         .then((response) => {
             console.log("Accedido correctamente a la pelicula:");
-            console.log({response});
             setMovie(response.data);
         })
         .catch(e => {

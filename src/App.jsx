@@ -6,6 +6,7 @@ import MovieDetails from './pages/MovieDetails'
 import MoviesSearch from './pages/MoviesSearch'
 import ComingSoonMovies from './pages/ComingSoonMovies'
 import PageNotFound from './pages/PageNotFound'
+import MovieFound from './pages/MovieFound'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import axios from "axios"
 
@@ -23,7 +24,7 @@ function App() {
     <div>
       <nav className='AccessMenu'>
         <strong>
-          <a className='LetterMenu' href="/">Inicio</a>
+          <a className='LetterMenu' href="/home">Inicio</a>
           <a className='LetterMenu' href="/moviesSearch">Buscar</a>
           <a className='LetterMenu' href="/comingSoon">Proximamente</a>
           <a className='LetterMenu' href='/login'>Iniciar Sesión</a>
@@ -37,10 +38,11 @@ function App() {
       </header>
       <Router>
         <Routes>
-          <Route path='/' element={<HomePage />}/>
+          <Route path='/home' element={<HomePage />}/>
           <Route path='/moviesSearch' element={<MoviesSearch />}/>
           <Route path="/comingSoon" element={<ComingSoonMovies />}/>
           <Route exact path='/movie/:movieId' element={<MovieDetails />}/>
+          <Route exact path='/moviesSearch/:queryM' element={<MovieFound />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/regist' element={<Register />}/>
           <Route path='*' element={<PageNotFound />}/>

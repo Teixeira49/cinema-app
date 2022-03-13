@@ -4,14 +4,18 @@ import { Link } from "react-router-dom"
 
 export default function MoviesSection() {
 
+    const [number, setNumber] = useState("");
     const [movies, setMovie] = useState([]);
 
     const APIKEY = "1b824ec21a9bf44b056a421c462ed47d"
     const UrlKey = "https://api.themoviedb.org/3/discover/movie?api_key="
 
+    let PageCode = "&page="
+    let PageNumb = 1
+
     const importMovie = () => {
       
-        axios.get(UrlKey + APIKEY)
+        axios.get(UrlKey + APIKEY + PageCode + PageNumb)
           .then((response) => {
             console.log("Accedido correctamente a:");
             console.log({response});
@@ -52,6 +56,13 @@ export default function MoviesSection() {
                 </li>
             ))}
         </ul>
+        <div className='IterationPage'>
+          <Link to={"/home"}>
+            <button className='ButtomIteration' onClick={event => PageNumb+1}>←</button>
+          </Link>
+              <p className='IterationLetter'>Pagina {PageNumb}</p>
+            <button className='ButtomIteration'>→</button>
+        </div>
     </div>
   )
 }
