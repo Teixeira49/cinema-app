@@ -4,21 +4,22 @@ import { Link } from "react-router-dom"
 
 export default function MoviesSection() {
 
-    const [number, setNumber] = useState("");
+    let [number, setNumber] = useState(1);
+    let [lenPages,setPages] = useState(0)
     const [movies, setMovie] = useState([]);
 
     const APIKEY = "1b824ec21a9bf44b056a421c462ed47d"
     const UrlKey = "https://api.themoviedb.org/3/discover/movie?api_key="
 
     let PageCode = "&page="
-    let PageNumb = 1
 
     const importMovie = () => {
       
-        axios.get(UrlKey + APIKEY + PageCode + PageNumb)
+        axios.get(UrlKey + APIKEY + PageCode + number)
           .then((response) => {
             console.log("Accedido correctamente a:");
             console.log({response});
+            setPages(response.data.total_pages);
             setMovie(response.data.results);
           })
           .catch(e => {
@@ -26,11 +27,14 @@ export default function MoviesSection() {
           });
         };
       
-        useEffect(()=> {
+        useState(()=> {
           importMovie();
-        }, []);
+        }, [number]);
 
-    
+    //  useEffect(()=>{
+//    console.log("Incrementando a " + first)
+//  },[first])
+
   return (
     <div>
         <header className='MoviesGeneral'>
@@ -57,11 +61,9 @@ export default function MoviesSection() {
             ))}
         </ul>
         <div className='IterationPage'>
-          <Link to={"/home"}>
-            <button className='ButtomIteration' onClick={event => PageNumb+1}>←</button>
-          </Link>
-              <p className='IterationLetter'>Pagina {PageNumb}</p>
-            <button className='ButtomIteration'>→</button>
+            <button className='ButtomIteration' onClick={()=>{if(number > 1){setNumber(number - 1), importMovie()}}}> ←</button>
+              <p className='IterationLetter'>Pagina {number}</p>
+            <button className='ButtomIteration' onClick={()=>{if(number < lenPages){setNumber(number + 1), importMovie()}}}>→</button>
         </div>
     </div>
   )
