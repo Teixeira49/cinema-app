@@ -1,7 +1,15 @@
-import React from 'react'
 import MoviesSection from './MoviesSection'
+import React, { useEffect, useState } from 'react'
 
 export default function MoviesSearch() {
+
+    const [search, setSearch] = useState("");
+    const history = useHistory()
+    const handleSumit = (error) => {
+        error.prebentDefault();
+    }
+    
+
   return (
     <div>
         <form action="">
