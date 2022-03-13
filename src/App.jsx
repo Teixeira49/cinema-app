@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react'
 import logo from './logo.svg'
 import './App.css'
 import HomePage from './pages/HomePage'
+import MovieDetails from './pages/MovieDetails'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import axios from "axios"
 
@@ -18,23 +19,35 @@ const Login = () =>
 const MoviesFull = () =>
   <h1> List of movies: </h1>
 
-const MovieDetails = () =>
-  <h1> Movie: </h1>
-
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<HomePage />}/>
-        <Route path='/movies' element={<MoviesFull />}/>
-        <Route path='/movieDetails' element={<MovieDetails />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/regist' element={<Register />}/>
-        <Route path='*' element={<PageNotFound />}/>
-      </Routes>
-    </Router>
+    <div>
+      <nav className='AccessMenu'>
+        <strong>
+          <a className='LetterMenu' href="/">Inicio</a>
+          <a className='LetterMenu' href="/movies">Buscar</a>
+          <a className='LetterMenu' href='/login'>Iniciar Sesión</a>
+          <a className='LetterMenu' href='/regist'>Registrar</a>
+        </strong>
+      </nav>
+      <header className='TitleBar'>
+        <h1 className='TitleP'>
+          Cinema Teixeira
+        </h1>
+      </header>
+      <Router>
+        <Routes>
+          <Route path='/' element={<HomePage />}/>
+          <Route path='/moviesSearch' element={<MoviesFull />}/>
+          <Route exact path='/movie/:movieId' element={<MovieDetails />}/>
+          <Route path='/login' element={<Login />}/>
+          <Route path='/regist' element={<Register />}/>
+          <Route path='*' element={<PageNotFound />}/>
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
