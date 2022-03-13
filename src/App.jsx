@@ -5,12 +5,10 @@ import HomePage from './pages/HomePage'
 import MovieDetails from './pages/MovieDetails'
 import MoviesSearch from './pages/MoviesSearch'
 import ComingSoonMovies from './pages/ComingSoonMovies'
+import PageNotFound from './pages/PageNotFound'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import axios from "axios"
 
-
-const PageNotFound = () =>
-  <h1> Error 404: Page not Found, Don't be sad. come take a hug (っ◔◡◔)っ </h1>
 
 const Register = () =>
   <h1> Register:</h1>
