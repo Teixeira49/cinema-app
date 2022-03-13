@@ -43,6 +43,9 @@ export default function MovieDetails(){
     let adultos = "";
     let website = "";
     let websiteUrl = "";
+    let presupuesto = "";
+    let recaudacion = "";
+    let sipnosis = movies.overview;
 
     if(movies.adults){
         adultos = "Solo para mayores de +18"
@@ -57,6 +60,20 @@ export default function MovieDetails(){
         website = "No posee sitio web oficial"
         websiteUrl = ""
     }
+
+    if((movies.budget) <= 0){
+        presupuesto = "Desconocido."
+    }else{
+        presupuesto = "$ "+ movies.budget + " USD"
+    }
+
+    if((movies.revenue) <= 0){
+        recaudacion = "Desconocido."
+    }else{
+        recaudacion = "$ "+ movies.revenue + " USD"
+    }
+
+    sipnosis = sipnosis.charAt(0).toUpperCase() + sipnosis.slice(1) // Colocar la primera letra de la descripcion en mayuscula
 
     return <div>
                 <header className='MoviesGeneral'>
@@ -75,13 +92,13 @@ export default function MovieDetails(){
                         <p><strong>Idioma Original:</strong> {movies.original_language}</p>
                         <p><strong>Idiomas disponibles:</strong> {movies.spoken_languages.map(genre => " " + genre.iso_639_1) + "."}</p>
                         <p><strong>Estado:</strong> {movies.status}</p>
-                        <p><strong>Presupuesto:</strong> {"$ "+ movies.budget + " USD"}</p>
-                        <p><strong>Recaudacion:</strong> {"$ "+ movies.revenue + " USD"}</p>    
+                        <p><strong>Presupuesto:</strong> {presupuesto}</p>
+                        <p><strong>Recaudacion:</strong> {recaudacion}</p>    
                         <p><strong>Compañias productoras:</strong> {movies.production_companies.map(genre => " " + genre.name) + "."}</p>
                         <p><strong>Popularidad:</strong> {movies.popularity}</p>
                         <p><strong>Promedio Votos:</strong> {movies.vote_average}</p>
                         <p><strong>Votos totales:</strong> {movies.vote_count}</p>
-                        <p><strong>Sipnosis:</strong> {movies.overview}</p>
+                        <p><strong>Sipnosis:</strong> {sipnosis}</p>
                         <p><strong>Sitio web Promocional:</strong> <a href={websiteUrl}>{website}</a></p>
                     </div>
                 </div>

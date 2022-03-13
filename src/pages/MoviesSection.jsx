@@ -30,7 +30,7 @@ export default function MoviesSection() {
   return (
     <div>
         <header className='MoviesGeneral'>
-            <h3>¿Que pelicula vamos a consultar hoy?</h3>
+            <h3 className='DetailsTitle'><strong>¿Que pelicula vamos a consultar hoy?</strong></h3>
         </header>
         <ul className='MovieBlocks'>
             {movies.map(movie => (
