@@ -27,7 +27,7 @@ export default function MoviesSection() {
           });
         };
       
-        useState(()=> {
+        useEffect(()=> {
           importMovie();
         }, [number]);
 

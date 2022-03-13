@@ -12,7 +12,9 @@ export default function MovieFound() {
     let queryResult = queryM
 
     let PageCode = "&page="
-    let PageNumb = 1
+
+    let [number, setNumber] = useState(1);
+    let [lenPage ,setPages] = useState(0)
 
     let QueryData = "&query=" + queryM.replace(" ", "+");
 
@@ -21,22 +23,21 @@ export default function MovieFound() {
     const UrlKey = "https://api.themoviedb.org/3/search/movie?api_key="
     const APIKEY = "1b824ec21a9bf44b056a421c462ed47d"
 
-    useEffect(() => {
-        axios.get(UrlKey + APIKEY + QueryData + PageCode + PageNumb)
+    const GetMovie = () => {
+        axios.get(UrlKey + APIKEY + QueryData + PageCode + number)
         .then((response) => {
             console.log("Accedido correctamente a la pelicula:");
+            setPages(response.data.total_pages);
             setMovie(response.data.results);
         })
         .catch(e => {
             console.log(e);
         });
-    }, [queryM]);
+    };
 
-    const a = movies;
-
-    console.log("pepe")
-    console.log(a)
-
+    useEffect(()=> {
+        GetMovie();
+    },[number])
 
     if(!movies){
         return <div className='MoviesGeneral'>
@@ -54,7 +55,7 @@ export default function MovieFound() {
   return (
     <div>
         <header className='MoviesGeneral'>
-            <h3 className='DetailsTitle'><strong>Resultados de la busqueda ({queryResult}, Pagina {PageNumb}):</strong></h3>
+            <h3 className='DetailsTitle'><strong>Resultados de la busqueda ({queryResult}, Pagina {number}):</strong></h3>
         </header>
         <ul className='MovieBlocks'>
             {movies.map(movie => (
@@ -77,11 +78,11 @@ export default function MovieFound() {
             ))}
         </ul>
         <div className='IterationPage'>
-            <button className='ButtomIteration'>←</button>
+            <button className='ButtomIteration' onClick={()=>{if(number > 1){setNumber(number - 1), GetMovie()}}}>←</button>
             <Link to={"/moviesSearch"}>
                 <button className='ButtomReturn'>Hacer otra Busqueda</button>
             </Link>
-            <button className='ButtomIteration'>→</button>
+            <button className='ButtomIteration' onClick={()=>{if(number < lenPage){setNumber(number + 1), GetMovie()}}}>→</button>
         </div>
 
     </div>
