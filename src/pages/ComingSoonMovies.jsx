@@ -42,9 +42,12 @@ export default function ComingSoonMovies() {
                             <div>{"======================"}</div>
                             <div className='MovieTitleStyle'><strong>{movie.title}{":"}</strong></div>
                             <div>{"======================"}</div>
+                            <div><strong>{"Estrena en: "}{movie.release_date}</strong></div>
+                            <div>{"-----------------------------------------"}</div>
                             <div>{"Idioma Original: "}{movie.original_language}</div>
                             <div>{"Calificación: "}{movie.vote_average}</div>
                             <div>{"Votos: " }{movie.vote_count}</div>
+                            <div>{"-----------------------------------------"}</div>
                             <div className='PhamtonPoint'>{" ."}</div>
                         </div>
                     </div>
