@@ -3,6 +3,8 @@ import logo from './logo.svg'
 import './App.css'
 import HomePage from './pages/HomePage'
 import MovieDetails from './pages/MovieDetails'
+import MoviesSearch from './pages/MoviesSearch'
+import ComingSoonMovies from './pages/ComingSoonMovies'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import axios from "axios"
 
@@ -16,9 +18,6 @@ const Register = () =>
 const Login = () =>
   <h1> Login: </h1>
 
-const MoviesFull = () =>
-  <h1> List of movies: </h1>
-
 function App() {
   const [count, setCount] = useState(0)
 
@@ -27,7 +26,8 @@ function App() {
       <nav className='AccessMenu'>
         <strong>
           <a className='LetterMenu' href="/">Inicio</a>
-          <a className='LetterMenu' href="/movies">Buscar</a>
+          <a className='LetterMenu' href="/moviesSearch">Buscar</a>
+          <a className='LetterMenu' href="/comingSoon">Proximamente</a>
           <a className='LetterMenu' href='/login'>Iniciar Sesión</a>
           <a className='LetterMenu' href='/regist'>Registrar</a>
         </strong>
@@ -40,7 +40,8 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<HomePage />}/>
-          <Route path='/moviesSearch' element={<MoviesFull />}/>
+          <Route path='/moviesSearch' element={<MoviesSearch />}/>
+          <Route path="/comingSoon" element={<ComingSoonMovies />}/>
           <Route exact path='/movie/:movieId' element={<MovieDetails />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/regist' element={<Register />}/>

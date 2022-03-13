@@ -68,7 +68,11 @@ export default function MovieDetails(){
     }
 
     if((movies.revenue) <= 0){
-        recaudacion = "Desconocido."
+        if((movies.status != "Released")) {
+            recaudacion = "Aun no empezada."
+        }else{
+            recaudacion = "Desconocido."
+        }
     }else{
         recaudacion = "$ "+ movies.revenue + " USD"
     }
