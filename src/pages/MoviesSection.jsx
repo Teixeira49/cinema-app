@@ -4,14 +4,22 @@ import { Link } from "react-router-dom"
 
 export default function MoviesSection() {
 
-    let [number, setNumber] = useState(1);
-    let [lenPages,setPages] = useState(0)
-    const [movies, setMovie] = useState([]);
+  // Variables del programa
+
+    let [number, setNumber] = useState(1);    // Numero de pagina
+    let [lenPages,setPages] = useState(0)     // Cantidad total de paginas
+    const [movies, setMovie] = useState([]);  // Para las peliculas
+
+  // Acceso a la api
 
     const APIKEY = "1b824ec21a9bf44b056a421c462ed47d"
     const UrlKey = "https://api.themoviedb.org/3/discover/movie?api_key="
 
+  // Controlar la pagina de vista:
+
     let PageCode = "&page="
+
+  // Funcion de extraccion y muestreo
 
     const importMovie = () => {
       
@@ -31,11 +39,8 @@ export default function MoviesSection() {
           importMovie();
         }, [number]);
 
-    //  useEffect(()=>{
-//    console.log("Incrementando a " + first)
-//  },[first])
-
   return (
+    // Esta es la vista principal de seccion
     <div>
         <header className='MoviesGeneral'>
             <h3 className='DetailsTitle'><strong>¿Que pelicula vamos a consultar hoy?</strong></h3>
@@ -66,5 +71,5 @@ export default function MoviesSection() {
             <button className='ButtomIteration' onClick={()=>{if(number < lenPages){setNumber(number + 1), importMovie()}}}>→</button>
         </div>
     </div>
-  )
+  )// El segundo div dentro del codigo esta ahi debido a que realiza una operacion logica particular
 }

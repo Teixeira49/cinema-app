@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom"
-import MoviesSearch from './MoviesSearch';
+import NavegationBar from './NavegationBar';
+import ChargingPage from './ChargingPage';
 
 export default function MovieFound() {
 
@@ -40,20 +41,14 @@ export default function MovieFound() {
     },[number])
 
     if(!movies){
-        return <div className='MoviesGeneral'>
-                    <h1 className='DetailsTitle'><strong>Cargando su sitio web...</strong></h1>
-                    <p className='PhamtonPointA'>.</p>
-                    <p>Por favor espere, este proceso puede tardar un poco</p>
-                    <p className='PhamtonPointA'>.</p>
-                    <p>Si no funciona, regrese atras y vuelva a intententarlo mas tarde, intente ademas chequear que su conexion a internet es estable para acceder al contenido</p>
-                    <p className='PhamtonPointA'>.</p>
-                    <p>Tranquilo usuario, toma, un abrazo:</p>
-                    <p>(っ^_^)っ</p>
-                </div>
+        return <div>
+            <ChargingPage />
+        </div>
     }
 
   return (
     <div>
+        <NavegationBar />
         <header className='MoviesGeneral'>
             <h3 className='DetailsTitle'><strong>Resultados de la busqueda ({queryResult}, Pagina {number}):</strong></h3>
         </header>

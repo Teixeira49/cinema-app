@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react'
+import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import HomePage from './pages/HomePage'
@@ -8,7 +8,7 @@ import ComingSoonMovies from './pages/ComingSoonMovies'
 import PageNotFound from './pages/PageNotFound'
 import MovieFound from './pages/MovieFound'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import axios from "axios"
+import InitPage from './pages/InitPage'
 
 
 const Register = () =>
@@ -22,15 +22,6 @@ function App() {
 
   return (
     <div>
-      <nav className='AccessMenu'>
-        <strong>
-          <a className='LetterMenu' href="/home">Inicio</a>
-          <a className='LetterMenu' href="/moviesSearch">Buscar</a>
-          <a className='LetterMenu' href="/comingSoon">Proximamente</a>
-          <a className='LetterMenu' href='/login'>Iniciar Sesión</a>
-          <a className='LetterMenu' href='/regist'>Registrar</a>
-        </strong>
-      </nav>
       <header className='TitleBar'>
         <h1 className='TitleP'>
           Cinema Teixeira
@@ -38,6 +29,7 @@ function App() {
       </header>
       <Router>
         <Routes>
+          <Route path='/' element={<InitPage />}/>
           <Route path='/home' element={<HomePage />}/>
           <Route path='/moviesSearch' element={<MoviesSearch />}/>
           <Route path="/comingSoon" element={<ComingSoonMovies />}/>

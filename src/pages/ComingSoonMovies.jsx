@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import NavegationBar from './NavegationBar';
 
 export default function ComingSoonMovies() {
 
@@ -28,6 +29,7 @@ export default function ComingSoonMovies() {
 
   return (
     <div>
+      <NavegationBar />
         <header className='MoviesGeneral'>
             <h3 className='DetailsTitle'><strong>Muy proximamente en cartelera:</strong></h3>
         </header>

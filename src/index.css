@@ -179,3 +179,79 @@ code {
   vertical-align: top;
   display: flex;
 }
+
+.UserPresentation{
+  display: flex;
+  vertical-align: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.SuperBarUser{
+  margin: 15px;
+  border-style: outset;
+  height: 25px;
+  width: 300px;
+  border-radius: 20px;
+  border-block-end-color: darkblue;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.SuperLetterUrser{
+  margin: 15px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 24px;
+}
+
+.ButtomsRegist{
+  display: flex;
+  justify-content: center;
+}
+
+.ButtomSearch{
+  border-radius: 60px;
+  border-style:outset;
+  background-color: aliceblue;
+  color: black;
+  padding: 6px;
+  margin: 13px;
+  font-size: 15px;
+}
+
+.ButtomSearch:hover{
+  opacity: 0.7;
+  background-color: darkgoldenrod;
+}
+
+.ButtomsRegistStyle{
+  border-radius: 60px;
+  border-collapse:collapse;
+  border-style:outset;
+  background-color: aliceblue;
+  color: black;
+  padding: 6px;
+  margin: 15px;
+}
+
+.ButtomsRegistStyle:hover{
+  opacity: 0.9;
+  background-color: goldenrod;
+}
+
+.ButtomsRegistStyle:after{
+  background-color: grey;
+}
+
+.BackGroundForm{
+  background-color: black;
+  border-radius: 20px;
+  color: whitesmoke;
+  width: 500px;
+  height: 500px;
+}
+
+.BackGrondFormLocate{
+  justify-content: center;
+  display: flex;
+}

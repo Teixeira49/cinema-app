@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
+import NavegationBar from './NavegationBar';
+import ChargingPage from './ChargingPage';
 
 export default function MovieDetails(){
+
+    // Logica de extraccion:
 
     const {movieId} = useParams();
     console.log(movieId)
@@ -24,18 +28,15 @@ export default function MovieDetails(){
         });
     }, [movieId]);
 
+    // Si no carga la pelicula:
+
     if(!movies){
-        return <div className='MoviesGeneral'>
-                    <h1 className='DetailsTitle'><strong>Cargando su sitio web...</strong></h1>
-                    <p className='PhamtonPointA'>.</p>
-                    <p>Por favor espere, este proceso puede tardar un poco</p>
-                    <p className='PhamtonPointA'>.</p>
-                    <p>Si no funciona, regrese atras y vuelva a intententarlo mas tarde, intente ademas chequear que su conexion a internet es estable para acceder al contenido</p>
-                    <p className='PhamtonPointA'>.</p>
-                    <p>Tranquilo usuario, toma, un abrazo:</p>
-                    <p>(っ^_^)っ</p>
-                </div>
+        return <div>
+            <ChargingPage />
+        </div>
     }
+
+    // Variables rellables:
 
     const poster = "https://image.tmdb.org/t/p/w500" + movies.poster_path;
     const title = "Pelicula: " + movies.title;
@@ -45,6 +46,8 @@ export default function MovieDetails(){
     let presupuesto = "";
     let recaudacion = "";
     let sipnosis = movies.overview;
+
+    // Reemplazos puntuales de data para hacerlo mas entendible el muestreo en la ficha de detalles:
 
     if(movies.adults){
         adultos = "Solo para mayores de +18"
@@ -76,9 +79,14 @@ export default function MovieDetails(){
         recaudacion = "$ "+ movies.revenue + " USD"
     }
 
+    // La sipnosis la arroja con la primera ltra en minuscula, correccion:
+
     sipnosis = sipnosis.charAt(0).toUpperCase() + sipnosis.slice(1) // Colocar la primera letra de la descripcion en mayuscula
 
+    // Muestra de la ficha:
+
     return <div>
+        <NavegationBar />
                 <header className='MoviesGeneral'>
                     <h3 className='DetailsTitle'><strong>{title}</strong></h3>
                 </header>
